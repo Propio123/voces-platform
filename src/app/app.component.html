@@ -1,0 +1,43 @@
+<ion-app>
+  <!-- NAVBAR SUPERIOR -->
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-title>Voces ONG</ion-title>
+      <ion-buttons slot="end">
+        <ion-button *ngIf="showHome()" routerLink="/home">Inicio</ion-button>
+        <ion-button *ngIf="showAbout()" routerLink="/about">Quiénes somos</ion-button>
+        <ion-button *ngIf="showEvaluator()" routerLink="/evaluator">Evaluador IA</ion-button>
+        <ion-button *ngIf="showDashboardOng()" routerLink="/dashboard-ong">Dashboard ONG</ion-button>
+        <ion-button *ngIf="showRegister()" routerLink="/register">Registrarse</ion-button>
+        <ion-button *ngIf="showLogin()" routerLink="/login">Login</ion-button>
+        <ion-button *ngIf="showLogout()" (click)="logout()">Cerrar sesión</ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <ion-content class="main-content">
+    <router-outlet></router-outlet>
+
+    <!-- CHAT MINIATURA -->
+    
+  </ion-content>
+<app-chat-widget *ngIf="showChat()" class="chat-widget"></app-chat-widget>
+  <!-- FOOTER -->
+  <ion-footer class="app-footer">
+    <ion-toolbar color="light">
+      <div class="footer-content">
+        <div>
+          <strong>© {{ currentYear }} Voces ONG</strong>
+          <p>Promoviendo la justicia y equidad laboral en Latinoamérica.</p>
+        </div>
+        <div class="social">
+          <a href="#">Facebook</a> |
+          <a href="#">Instagram</a> |
+          <a href="#">Twitter</a>
+        </div>
+      </div>
+    </ion-toolbar>
+  </ion-footer>
+</ion-app>
+

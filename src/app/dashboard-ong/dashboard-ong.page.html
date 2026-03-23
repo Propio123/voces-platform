@@ -1,0 +1,73 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Dashboard ONG</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <ion-item>
+    <ion-label>Filtrar por país</ion-label>
+    <ion-select [(ngModel)]="selectedCountry" (ionChange)="applyFilters()">
+      <ion-select-option *ngFor="let c of countries" [value]="c">{{ c }}</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <!-- TARJETAS DE ESTADÍSTICAS -->
+  <div class="stats-grid">
+    <ion-card>
+      <ion-card-header>Salario promedio</ion-card-header>
+      <ion-card-content>{{ avgSalary | number:'1.0-2' }} USD</ion-card-content>
+    </ion-card>
+    <ion-card>
+      <ion-card-header>Puntaje promedio</ion-card-header>
+      <ion-card-content>{{ avgScore | number:'1.0-2' }}</ion-card-content>
+    </ion-card>
+    <ion-card>
+      <ion-card-header>Horas/semana promedio</ion-card-header>
+      <ion-card-content>{{ avgHours | number:'1.0-2' }}</ion-card-content>
+    </ion-card>
+    <ion-card>
+      <ion-card-header>Análisis totales</ion-card-header>
+      <ion-card-content>{{ filteredAnalyses.length }}</ion-card-content>
+    </ion-card>
+  </div>
+
+  <!-- GRÁFICOS -->
+  <div *ngIf="filteredAnalyses.length > 0; else sinDatos">
+    <canvas id="salaryChart"></canvas>
+    <canvas id="scoreChart" style="margin-top: 30px;"></canvas>
+
+    <ion-card style="margin-top: 30px;">
+      <ion-card-header>Últimos análisis</ion-card-header>
+      <ion-card-content>
+        <table>
+          <thead>
+            <tr>
+              <th>Pais</th>
+              <th>Trabajo</th>
+              <th>Salario</th>
+              <th>Horas</th>
+              <th>Puntaje</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let a of filteredAnalyses.slice(-5)">
+              <td>{{ a.country }}</td>
+              <td>{{ a.job }}</td>
+              <td>{{ a.salary }}</td>
+              <td>{{ a.hoursPerWeek }}</td>
+              <td>{{ a.score }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <ng-template #sinDatos>
+    <ion-text color="medium">
+      <p class="ion-text-center">No hay datos disponibles para mostrar.</p>
+    </ion-text>
+  </ng-template>
+</ion-content>

@@ -1,0 +1,11 @@
+.chat-container { display:flex; flex-direction:column; height:100%; }
+.messages { padding: 12px; display:flex; flex-direction:column; gap:10px; }
+.msg-user { align-self: flex-end; }
+.msg-assistant { align-self: flex-start; }
+.bubble {
+  background: #f1f1f1;
+  padding: 12px;
+  border-radius: 10px;
+  max-width: 85%;
+}
+.msg-user .bubble { background: var(--ion-color-primary); color: white; }

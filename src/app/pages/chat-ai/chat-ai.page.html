@@ -1,0 +1,18 @@
+<div class="chat-floating" [class.open]="isOpen">
+  <div class="chat-header" (click)="toggleChat()">
+    💬 Voces IA
+  </div>
+
+  <div class="chat-body" *ngIf="isOpen">
+    <div class="messages">
+      <div *ngFor="let msg of messages" [class.user]="msg.sender==='user'" [class.bot]="msg.sender==='bot'">
+        {{ msg.text }}
+      </div>
+    </div>
+
+    <div class="chat-input">
+      <input [value]="newMessage" placeholder="Escribe tu mensaje..." (keyup.enter)="sendMessage()" (input)="newMessage = $event.target.value"/>
+      <button (click)="sendMessage()">Enviar</button>
+    </div>
+  </div>
+</div>

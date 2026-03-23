@@ -1,0 +1,77 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Mejoras Laborales</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Analiza tu situación laboral</ion-card-title>
+      <ion-card-subtitle>Completa los datos y recibe sugerencias con IA</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="floating">Tipo de trabajo</ion-label>
+        <ion-input [(ngModel)]="job" placeholder="Ej. Operario de planta"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Horas por semana</ion-label>
+        <ion-input type="number" [(ngModel)]="hoursPerWeek"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Sueldo mensual (USD)</ion-label>
+        <ion-input type="number" [(ngModel)]="salary"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">País</ion-label>
+        <ion-input [(ngModel)]="country"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Condiciones laborales</ion-label>
+        <ion-textarea
+          [(ngModel)]="workConditions"
+          placeholder="Describe tu ambiente, carga laboral, trato, etc.">
+        </ion-textarea>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Beneficios recibidos</ion-label>
+        <ion-input [(ngModel)]="benefits" placeholder="Ej. Seguro, alimentación, transporte"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Satisfacción actual</ion-label>
+        <ion-range min="1" max="10" step="1" snaps="true" [(ngModel)]="satisfaction">
+          <ion-label slot="end">{{ satisfaction }}</ion-label>
+        </ion-range>
+      </ion-item>
+
+      <ion-button expand="block" color="success" (click)="analyzeImprovements()">
+        Analizar con IA
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <div *ngIf="loading" class="ion-text-center ion-margin-top">
+    <ion-spinner name="crescent"></ion-spinner>
+    <p>Analizando situación con IA...</p>
+  </div>
+
+  <ion-card *ngIf="result && !loading">
+    <ion-card-header>
+      <ion-card-title>Resultado</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-progress-bar [value]="score / 100" [color]="color"></ion-progress-bar>
+      <p class="ion-margin-top">{{ result }}</p>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

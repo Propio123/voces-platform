@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Evaluar Sueldo</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <ion-item>
+    <ion-label position="floating">Tipo de trabajo</ion-label>
+    <ion-input [(ngModel)]="job" placeholder="Ej. Empacadora de tomates"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Horas por semana</ion-label>
+    <ion-input type="number" [(ngModel)]="hoursPerWeek"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Sueldo mensual (USD)</ion-label>
+    <ion-input type="number" [(ngModel)]="salary"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">País</ion-label>
+    <ion-input [(ngModel)]="country" placeholder="Ecuador"></ion-input>
+  </ion-item>
+
+  <ion-button expand="block" color="success" (click)="evaluateSalary()">
+    Evaluar
+  </ion-button>
+
+  <div *ngIf="loading" class="ion-text-center">
+    <ion-spinner name="crescent"></ion-spinner>
+    <p>Analizando con IA...</p>
+  </div>
+
+  <ion-card *ngIf="analysis">
+    <ion-card-header>
+      <ion-card-title>Resultado</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <div class="semaforo-container">
+        <div class="semaforo" [ngStyle]="{'width.%': score, 'background-color': color}"></div>
+      </div>
+      <p>{{ score }}%</p>
+      <p>{{ analysis }}</p>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>
+
+
+
+
+

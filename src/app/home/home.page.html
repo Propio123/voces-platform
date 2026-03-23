@@ -1,0 +1,35 @@
+<ion-content class="ion-padding">
+  <div class="home-container">
+    <img src="assets/logo.png" alt="Logo Voces" class="logo">
+
+    <h2>Bienvenido a Voces</h2>
+    <p>
+      Promovemos la justicia laboral y el análisis inteligente de sueldos mediante IA.
+    </p>
+
+    <ion-button expand="block" color="primary" routerLink="/evaluator">
+      Evaluar mi salario
+    </ion-button>
+
+    <p class="info-text">
+      Regístrate para acceder a beneficios de inteligencia artificial y mejorar tu situación laboral.
+    </p>
+
+    <ion-button expand="block" color="medium" routerLink="/register">
+      Crear cuenta
+    </ion-button>
+
+    <h3>Noticias recientes</h3>
+
+    <div class="news-list">
+      <ion-card *ngFor="let n of news">
+        <ion-card-header>
+          <ion-card-title>{{ n.title }}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          {{ n.content }}
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </div>
+</ion-content>

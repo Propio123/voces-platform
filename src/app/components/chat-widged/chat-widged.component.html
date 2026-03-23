@@ -1,0 +1,21 @@
+<div class="chat-button" (click)="toggleChat()">
+  <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
+</div>
+
+<div class="chat-box" *ngIf="isOpen">
+  <div class="chat-header">
+    <h3>Asistente Voces</h3>
+    <ion-icon name="close" (click)="toggleChat()"></ion-icon>
+  </div>
+
+  <div class="chat-messages">
+    <div *ngFor="let msg of messages" [ngClass]="msg.sender">
+      <p>{{ msg.text }}</p>
+    </div>
+  </div>
+
+  <div class="chat-input">
+    <ion-input [(ngModel)]="message" placeholder="Escribe un mensaje..."></ion-input>
+    <ion-button (click)="sendMessage()">Enviar</ion-button>
+  </div>
+</div>

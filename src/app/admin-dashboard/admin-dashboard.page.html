@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar color="danger">
+    <ion-title>Dashboard ONG</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-card *ngFor="let analysis of analyses">
+    <ion-card-header>
+      <ion-card-title>{{ analysis.job }}</ion-card-title>
+      <ion-card-subtitle>Usuario: {{ analysis.userEmail }}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <p>{{ analysis.result }}</p>
+      <ion-progress-bar value="{{ analysis.score / 100 }}" color="{{ analysis.color }}"></ion-progress-bar>
+    </ion-card-content>
+  </ion-card>
+
+  <p *ngIf="analyses.length === 0">No hay análisis registrados aún.</p>
+</ion-content>

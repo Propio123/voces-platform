@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Chat ONG</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let msg of messages">
+      <ion-label [color]="msg.from === 'ONG' ? 'primary' : 'medium'">
+        <b>{{ msg.from }}:</b> {{ msg.text }}
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-input [(ngModel)]="userInput" placeholder="Escribe tu mensaje..."></ion-input>
+    <ion-buttons slot="end">
+      <ion-button color="success" (click)="sendMessage()">Enviar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

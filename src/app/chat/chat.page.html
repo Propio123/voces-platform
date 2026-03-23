@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Chat IA</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding chat-container">
+  <div class="messages">
+    <div *ngFor="let m of messages" [ngClass]="{'msg-user': m.role==='user','msg-assistant': m.role==='assistant'}">
+      <div class="bubble">
+        <p [innerHTML]="m.text"></p>
+        <small>{{ m.timestamp | date:'short' }}</small>
+      </div>
+    </div>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-item>
+      <ion-input placeholder="Escribe tu mensaje..." [(ngModel)]="inputText" (keyup.enter)="send()"></ion-input>
+      <ion-button (click)="send()" [disabled]="loading">
+        {{ loading ? 'Enviando...' : 'Enviar' }}
+      </ion-button>
+    </ion-item>
+  </ion-toolbar>
+</ion-footer>

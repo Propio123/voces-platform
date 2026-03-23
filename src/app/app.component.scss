@@ -1,0 +1,40 @@
+ion-app, ion-content.main-content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+ion-header ion-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+ion-footer.app-footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 100;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  font-size: 0.9em;
+  padding: 0 15px;
+}
+
+.chat-widget {
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  z-index: 200;
+  width: 300px;
+  max-height: 400px;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+
