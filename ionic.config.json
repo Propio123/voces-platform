@@ -1,0 +1,7 @@
+{
+  "name": "voces",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}

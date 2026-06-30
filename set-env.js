@@ -1,4 +1,5 @@
-const fs = require('fs');
+import fs from 'fs';
+
 const targetPath = './src/environments/environment.prod.ts';
 
 const envConfigFile = `export const environment = {
