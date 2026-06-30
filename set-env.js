@@ -1,6 +1,14 @@
 import fs from 'fs';
+import path from 'path';
 
-const targetPath = './src/environments/environment.prod.ts';
+const dirPath = './src/environments';
+const targetPath = `${dirPath}/environment.prod.ts`;
+
+// ASEGURAR QUE LA CARPETA EXISTA (Si no existe en Netlify, Linux la creará aquí)
+if (!fs.existsSync(dirPath)) {
+  fs.mkdirSync(dirPath, { recursive: true });
+  console.log('📁 Carpeta src/environments creada dinámicamente.');
+}
 
 const envConfigFile = `export const environment = {
   production: true,
