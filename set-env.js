@@ -1,15 +1,16 @@
 import fs from 'fs';
-import path from 'path';
 
 const dirPath = './src/environments';
-const targetPath = `${dirPath}/environment.prod.ts`;
+const localPath = `${dirPath}/environment.ts`;
+const prodPath = `${dirPath}/environment.prod.ts`;
 
-// ASEGURAR QUE LA CARPETA EXISTA (Si no existe en Netlify, Linux la creará aquí)
+// 1. Asegurar que la carpeta exista en el contenedor de Linux de Netlify
 if (!fs.existsSync(dirPath)) {
   fs.mkdirSync(dirPath, { recursive: true });
   console.log('📁 Carpeta src/environments creada dinámicamente.');
 }
 
+// 2. El contenido con tus variables de Netlify
 const envConfigFile = `export const environment = {
   production: true,
   firebase: {
@@ -23,5 +24,8 @@ const envConfigFile = `export const environment = {
 };
 `;
 
-fs.writeFileSync(targetPath, envConfigFile);
-console.log('✅ Variables de Firebase inyectadas correctamente.');
+// 3. Escribir AMBOS archivos para que el fileReplacements de Angular no falle
+fs.writeFileSync(localPath, envConfigFile);
+fs.writeFileSync(prodPath, envConfigFile);
+
+console.log('✅ Entorno e inyección de Firebase listos para Angular.');
