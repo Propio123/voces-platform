@@ -1,24 +1,108 @@
-// El ion-content queda libre de Flexbox para que Ionic maneje sus capas internas en paz
-ion-content {
-  --padding-top: 30px;
-}
-
-// 🌟 El Flexbox se lo aplicamos al contenedor interno
+// Contenedor principal centrado
 .login-wrapper {
+  max-width: 420px;
+  margin: 0 auto;
+  padding: 24px 16px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  min-height: 80vh; // Esto asegura que se centre verticalmente en la pantalla
+  min-height: 85vh; // Centrado vertical elegante
+  font-family: var(--ion-font-family, sans-serif);
 }
 
-ion-button {
-  margin-top: 20px;
+// Encabezado estético
+.login-header {
+  text-align: center;
+  margin-bottom: 32px;
+
+  .login-logo {
+    max-height: 75px;
+    margin-bottom: 12px;
+    filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.08));
+  }
+
+  h1 {
+    font-size: 1.8rem;
+    font-weight: 800;
+    margin: 0;
+    color: var(--ion-color-dark);
+  }
+
+  p {
+    font-size: 0.9rem;
+    color: var(--ion-color-step-600, #666666);
+    margin: 6px 0 0 0;
+    line-height: 1.4;
+  }
 }
 
-a {
-  color: var(--ion-color-primary);
-  text-decoration: none;
-  font-weight: bold;
+// Estructura del Formulario e Inputs independientes (Anti-error setFocus)
+.login-form {
+  background: var(--ion-item-background, #ffffff);
+  border-radius: 20px;
+  padding: 8px 0;
+
+  .input-group {
+    position: relative;
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+
+    // Íconos internos minimalistas dentro del contorno del input
+    .input-icon {
+      position: absolute;
+      left: 14px;
+      font-size: 1.25rem;
+      color: var(--ion-color-step-400, #999999);
+      z-index: 5;
+      pointer-events: none;
+    }
+
+    // Configuración visual del ion-input moderno
+    ion-input {
+      --padding-start: 40px; // Espacio reservado para el ícono izquierdo
+      --border-radius: 12px;
+      --border-color: var(--ion-color-step-200, #e0e0e0);
+      --background: transparent;
+      font-size: 0.95rem;
+      width: 100%;
+    }
+  }
+
+  // El botón principal de ejecución
+  .btn-submit {
+    --border-radius: 12px;
+    --box-shadow: 0 4px 14px rgba(var(--ion-color-primary-rgb), 0.3);
+    font-weight: 700;
+    font-size: 1rem;
+    height: 48px;
+    margin-top: 24px;
+  }
 }
 
+// Pie de página de registro
+.login-footer {
+  text-align: center;
+  margin-top: 36px;
+  border-top: 1px solid var(--ion-color-step-150, #eeeeee);
+  padding-top: 20px;
 
+  p {
+    margin: 0;
+    font-size: 0.88rem;
+    color: var(--ion-color-step-500);
+  }
+
+  a {
+    display: inline-block;
+    margin-top: 4px;
+    color: var(--ion-color-primary);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.92rem;
+    
+    &:hover, &:active {
+      text-decoration: underline;
+    }
+  }
+}

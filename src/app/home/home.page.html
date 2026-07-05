@@ -1,9 +1,9 @@
 <ion-content class="ion-padding-vertical">
   <div class="home-wrapper">
     
-    <!-- 🚀 HERO SECTION: Captura de atención inmediata -->
+    <!-- HERO SECTION -->
     <header class="hero-section">
-      <div class="hero-brand animate__animated animate__fadeIn">
+      <div class="hero-brand">
         <img src="assets/logo.png" alt="Logo Voces" class="logo-hero">
         <h1>Voces</h1>
         <p class="hero-subtitle">Haciendo visible lo invisible en el mundo laboral</p>
@@ -15,64 +15,64 @@
           Usa nuestra herramienta inteligente impulsada por IA para auditar tu salario actual frente a las leyes laborales del Ecuador en menos de 2 minutos.
         </p>
         
-        <!-- 🔥 Botón principal destacado -->
+        <!-- ✅ CAMBIO AQUÍ: [icon] apuntando al objeto -->
         <ion-button expand="block" color="success" class="btn-evaluator ion-margin-top" routerLink="/evaluator">
-          <ion-icon name="calculator-outline" slot="start"></ion-icon>
+          <ion-icon [icon]="homeIcons.calculator" slot="start"></ion-icon>
           Evaluar mi salario ahora
         </ion-button>
       </div>
     </header>
 
-    <!-- 🤝 EL PROPÓSITO: Por qué Voces ayuda al trabajador -->
+    <!-- EL PROPÓSITO -->
     <section class="section-purpose ion-padding">
       <div class="section-title">
-        <ion-icon name="shield-checkmark-outline" color="primary"></ion-icon>
+        <ion-icon [icon]="homeIcons.shield" color="primary"></ion-icon>
         <h2>Tu voz es tu poder</h2>
       </div>
       <p class="purpose-text">
-        **Voces** es una plataforma tecnológica creada para cerrar la brecha de desigualdad laboral en el Ecuador. Permitimos a los trabajadores reportar e inspeccionar de forma **100% anónima y segura** sus jornadas laborales reales vs. sus ingresos percibidos. 
+        <strong>Voces</strong> es una plataforma tecnológica creada para cerrar la brecha de desigualdad laboral en el Ecuador. Permitimos a los trabajadores reportar e inspeccionar de forma <strong>100% anónima y segura</strong> sus jornadas laborales reales vs. sus ingresos percibidos. 
       </p>
       
       <div class="benefit-pills">
-        <div class="pill"><ion-icon name="eye-off-outline"></ion-icon> Registro totalmente anónimo</div>
-        <div class="pill"><ion-icon name="flash-outline"></ion-icon> Diagnóstico con Inteligencia Artificial</div>
-        <div class="pill"><ion-icon name="trending-up-outline"></ion-icon> Datos para negociación justa</div>
+        <div class="pill"><ion-icon [icon]="homeIcons.eyeOff"></ion-icon> Registro totalmente anónimo</div>
+        <div class="pill"><ion-icon [icon]="homeIcons.flash"></ion-icon> Diagnóstico con Inteligencia Artificial</div>
+        <div class="pill"><ion-icon [icon]="homeIcons.trending"></ion-icon> Datos para negociación justa</div>
       </div>
 
       <div class="cta-register-box ion-margin-top">
         <p>Únete a la red comunitaria y accede a herramientas avanzadas de IA para mejorar tu situación.</p>
         <ion-button fill="clear" color="primary" class="btn-register" routerLink="/register">
           Crear una cuenta gratuita
-          <ion-icon name="arrow-forward-outline" slot="end"></ion-icon>
+          <ion-icon [icon]="homeIcons.arrowForward" slot="end"></ion-icon>
         </ion-button>
       </div>
     </section>
 
-    <!-- 📊 IMPACTO ONGs: El backend de los datos -->
+    <!-- IMPACTO ONGs -->
     <section class="section-ong ion-padding">
       <div class="section-title">
-        <ion-icon name="analytics-outline" color="tertiary"></ion-icon>
+        <ion-icon [icon]="homeIcons.analytics" color="tertiary"></ion-icon>
         <h2>Transformando datos en acción social</h2>
       </div>
       <p>
-        No solo evaluamos casos individuales; centralizamos, procesamos y estructuramos la información recopilada para generar **Dashboards de Analítica Avanzada destinados a ONGs y defensores de los derechos humanos**. 
+        No solo evaluamos casos individuales; centralizamos, procesamos y estructuramos la información recopilada para generar <strong>Dashboards de Analítica Avanzada destinados a ONGs y defensores de los derechos humanos</strong>. 
       </p>
       <div class="ong-features">
         <div class="ong-feature-item">
-          <ion-icon name="stats-chart" color="tertiary"></ion-icon>
+          <ion-icon [icon]="homeIcons.stats" color="tertiary"></ion-icon>
           <span>Mapas de calor de subempleo y brechas salariales sectoriales en tiempo real.</span>
         </div>
         <div class="ong-feature-item">
-          <ion-icon name="document-text" color="tertiary"></ion-icon>
+          <ion-icon [icon]="homeIcons.document" color="tertiary"></ion-icon>
           <span>Reportes estadísticos exportables listos para auditorías institucionales.</span>
         </div>
       </div>
     </section>
 
-    <!-- 📰 NOTICIAS: Tarjetas modernas con diseño asimétrico -->
+    <!-- NOTICIAS -->
     <section class="section-news ion-padding">
       <div class="section-title">
-        <ion-icon name="newspaper-outline" color="medium"></ion-icon>
+        <ion-icon [icon]="homeIcons.newspaper" color="medium"></ion-icon>
         <h2>Actualidad Laboral</h2>
       </div>
       

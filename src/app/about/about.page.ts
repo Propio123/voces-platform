@@ -1,18 +1,6 @@
 import { Component } from '@angular/core';
 import { IonContent, IonButton, IonIcon } from "@ionic/angular/standalone";
-import { addIcons } from 'ionicons'; 
-import { 
-  calculatorOutline, 
-  shieldCheckmarkOutline, 
-  eyeOffOutline, 
-  flashOutline, 
-  trendingUpOutline, 
-  arrowForwardOutline, 
-  analyticsOutline, 
-  statsChart, 
-  documentText, 
-  newspaperOutline 
-} from 'ionicons/icons';
+
 @Component({
   selector: 'app-about',
   templateUrl: './about.page.html',
@@ -21,20 +9,7 @@ import {
 })
 export class AboutPage {
 
-  constructor() {
-    addIcons({
-      'calculator-outline': calculatorOutline,
-      'shield-checkmark-outline': shieldCheckmarkOutline,
-      'eye-off-outline': eyeOffOutline,
-      'flash-outline': flashOutline,
-      'trending-up-outline': trendingUpOutline,
-      'arrow-forward-outline': arrowForwardOutline,
-      'analytics-outline': analyticsOutline,
-      'stats-chart': statsChart,
-      'document-text': documentText,
-      'newspaper-outline': newspaperOutline
-    });
-  }
+  constructor() {}
 
   contactWhatsApp() {
     const phoneNumber = '593969743150'; // Formato internacional para Ecuador sin el '+'

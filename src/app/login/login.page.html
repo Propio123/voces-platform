@@ -1,20 +1,59 @@
-<ion-content class="ion-padding">
- <div class="input-group ion-margin-bottom">
-  <ion-input 
-    label="Correo electrónico" 
-    labelPlacement="floating" 
-    fill="outline" 
-    type="email">
-  </ion-input>
-</div>
+<ion-content class="ion-padding-vertical">
+  <div class="login-wrapper animate__animated animate__fadeIn">
+    
+    <!-- Header del Formulario -->
+    <header class="login-header">
+      <img src="assets/logo.png" alt="Logo Voces" class="login-logo">
+      <h1>Ingresar a Voces</h1>
+      <p>Accede a tu panel y audita tus condiciones laborales con IA.</p>
+    </header>
 
-<div class="input-group ion-margin-bottom">
-  <ion-input 
-    label="Contraseña" 
-    labelPlacement="floating" 
-    fill="outline" 
-    type="password">
-  </ion-input>
-</div>
+   <!-- En tu login.page.html, reemplaza la sección del formulario por esta: -->
+<form class="login-form" (ngSubmit)="onLogin()">
+  
+  <!-- Campo Correo -->
+  <div class="input-group">
+    <ion-icon [icon]="loginIcons.mail" class="input-icon"></ion-icon>
+    <ion-input 
+      label="Correo electrónico" 
+      labelPlacement="floating" 
+      fill="outline" 
+      type="email" 
+      placeholder="ejemplo@correo.com"
+      [(ngModel)]="email"
+      name="email"
+      required>
+    </ion-input>
+  </div>
+  
+  <!-- Campo Contraseña -->
+  <div class="input-group">
+    <ion-icon [icon]="loginIcons.lock" class="input-icon"></ion-icon>
+    <ion-input 
+      label="Contraseña" 
+      labelPlacement="floating" 
+      fill="outline" 
+      type="password" 
+      placeholder="••••••••"
+      [(ngModel)]="password"
+      name="password"
+      required>
+    </ion-input>
+  </div>
+
+  <!-- Botón de Iniciar Sesión Destacado -->
+  <ion-button expand="block" color="primary" type="submit" class="btn-submit ion-margin-top">
+    <ion-icon [icon]="loginIcons.logIn" slot="start"></ion-icon>
+    Iniciar Sesión
+  </ion-button>
+</form>
+
+    <!-- Enlaces de navegación inferior -->
+    <footer class="login-footer">
+      <p>¿No tienes una cuenta aún?</p>
+      <a routerLink="/register">Regístrate de forma anónima</a>
+    </footer>
+    
+  </div>
 </ion-content>
 

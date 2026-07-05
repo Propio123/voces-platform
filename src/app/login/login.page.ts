@@ -1,61 +1,63 @@
-import { Component, inject } from '@angular/core';
-import { Router } from '@angular/router';
-import { IonicModule } from '@ionic/angular';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { IonicModule } from '@ionic/angular';
+import { Router, RouterModule } from '@angular/router'; // 🌟 Añadimos Router
+ // 🌟 Ajusta la ruta a tu servicio real
+import { mailOutline, lockClosedOutline, logInOutline } from 'ionicons/icons';
 import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-login',
-  standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule],
   templateUrl: './login.page.html',
-  styleUrls: ['./login.page.scss']
+  styleUrls: ['./login.page.scss'],
+  standalone: true,
+  imports: [IonicModule, CommonModule, FormsModule, RouterModule]
 })
-export class LoginPage {
+export class LoginPage implements OnInit {
+
+  // Variables para el formulario de login
   email = '';
   password = '';
 
-  private authService = inject(AuthService);
-  private router = inject(Router);
+  public loginIcons = {
+    mail: mailOutline,
+    lock: lockClosedOutline,
+    logIn: logInOutline
+  };
 
-  async login() {
-    if (!this.email || !this.password) return;
+  constructor(
+    private authService: AuthService,
+    private router: Router
+  ) {}
+
+  ngOnInit() {}
+
+  async onLogin() {
+    if (!this.email || !this.password) {
+      console.warn('Por favor, llena todos los campos.');
+      return;
+    }
 
     try {
-      console.log('1. Iniciando proceso de firma en Firebase Auth...');
+      console.log('Iniciando sesión para:', this.email);
       await this.authService.login(this.email, this.password);
-      console.log('2. Autenticación exitosa. Esperando respuesta de Firestore...');
-
-      // Escuchamos el canal del rol de forma activa
-      const sub = this.authService.getUserRole().subscribe(role => {
-        console.log('3. Valor emitido por el canal de roles:', role);
-
-        // Si es null, significa que Firestore aún está procesando; esperamos la siguiente emisión
-        if (role === null) return; 
-
-        console.log('4. Evaluando redirección para el rol verídico:', role);
-        
-        // Cancelamos la suscripción para evitar bucles antes de navegar
-        sub.unsubscribe(); 
-
-        // 🚨 VERIFICA AQUÍ: ¿Tus rutas en app.routes.ts se escriben exactamente así?
-        if (role === 'admin') {
-          console.log('Redirigiendo a Dashboard ONG...');
-          this.router.navigateByUrl('/dashboard-ong');
-        } else if (role === 'register') {
-          console.log('Redirigiendo a Evaluador...');
-          this.router.navigateByUrl('/evaluator');
-        } else {
-          console.log('Redirigiendo a Home...');
-          this.router.navigateByUrl('/home');
+      
+      // Una vez logueado, escuchamos el rol que recupera el AuthService para redirigir
+      this.authService.getUserRole().subscribe(role => {
+        if (role) {
+          console.log('Rol obtenido con éxito:', role);
+          if (role === 'admin') {
+            this.router.navigate(['/dashboard-ong']);
+          } else {
+            this.router.navigate(['/dashboard-user']);
+          }
         }
       });
 
     } catch (error) {
-      console.error('Error crítico en el proceso de login:', error);
+      console.error('Error al iniciar sesión:', error);
+      // Aquí puedes colocar una alerta visual de Ionic para avisar al usuario si la contraseña es incorrecta
     }
   }
 }
-
-
