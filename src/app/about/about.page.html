@@ -1,23 +1,69 @@
-
-  <ion-toolbar color="primary">
-    <ion-title>Quiénes Somos</ion-title>
-  </ion-toolbar>
-
-<ion-content class="ion-padding">
-  <ion-card>
-    <ion-card-content>
-      <p>
-        <strong>Voces del Trabajo</strong> es una iniciativa que busca impulsar
-        la justicia laboral a través de la inteligencia artificial. Analizamos
-        las condiciones salariales, brindamos orientación y generamos reportes
-        sociales para apoyar el desarrollo humano y económico.
+<ion-content class="ion-padding-vertical">
+  <div class="about-wrapper">
+    
+    <!-- 🏢 SECCIÓN INSTITUCIONAL -->
+    <header class="about-header ion-padding">
+      <div class="brand-container animate__animated animate__fadeIn">
+        <img src="assets/logo.png" alt="Logo Voces" class="logo-about">
+        <h1>Sobre Voces</h1>
+        <div class="badge-version">Versión 1.2.0 (2026)</div>
+      </div>
+      
+      <p class="about-lead">
+        Nacimos con el firme propósito de democratizar el acceso a la justicia laboral en el Ecuador mediante el uso ético de la tecnología.
       </p>
+    </header>
+
+    <!-- 🎯 NUESTRA MISIÓN -->
+    <section class="section-mission ion-padding">
+      <div class="card-mission">
+        <div class="section-title">
+          <ion-icon name="rocket-outline" color="primary"></ion-icon>
+          <h2>El Origen y la Misión</h2>
+        </div>
+        <p>
+          En el contexto laboral actual, muchos trabajadores desconocen si sus ingresos se alinean estrictamente con la normativa legal vigente o las horas reales ejecutadas. **Voces** actúa como un puente tecnológico neutral. 
+        </p>
+        <p>
+          Utilizamos modelos avanzados de **Inteligencia Artificial** para procesar de forma automatizada las variables de sueldos, horas extra, décimos y fondos de reserva, entregando un diagnóstico inmediato sin costo alguno.
+        </p>
+      </div>
+    </section>
+
+    <!-- 🛡️ PRIVACIDAD ABSOLUTA -->
+    <section class="section-privacy ion-padding">
+      <div class="section-title">
+        <ion-icon name="lock-closed-outline" color="success"></ion-icon>
+        <h2>Transparencia y Privacidad</h2>
+      </div>
       <p>
-        Nuestra misión es <strong>dar voz a los trabajadores</strong> mediante
-        datos, educación y herramientas tecnológicas que promuevan la
-        equidad en el empleo.
+        La seguridad es nuestro pilar fundamental. Los datos recopilados para el análisis estadístico sectorial se procesan bajo estrictos estándares de **anonimización**. Ningún dato de carácter identificable es expuesto, protegiendo la integridad y estabilidad de los trabajadores que confían en la plataforma.
       </p>
-    </ion-card-content>
-  </ion-card>
+    </section>
+
+    <!-- 🛠️ ALIANZA TECNOLÓGICA (REDEX-TECH) -->
+    <section class="section-partner ion-padding">
+      <div class="partner-card">
+        <div class="partner-header">
+          <ion-icon name="code-working-outline" class="icon-partner"></ion-icon>
+          <div>
+            <h3>Colaborador de Desarrollo</h3>
+            <h2>Redex-Tech</h2>
+          </div>
+        </div>
+        
+        <p>
+          La infraestructura técnica, la arquitectura en la nube y el despliegue de los algoritmos de IA de Voces han sido co-desarrollados y respaldados por **Redex-Tech**, garantizando alta disponibilidad, seguridad y optimización de código.
+        </p>
+
+        <!-- 💬 Botón de Acción de WhatsApp -->
+        <ion-button expand="block" color="success" class="btn-whatsapp" (click)="contactWhatsApp()">
+          <ion-icon name="logo-whatsapp" slot="start"></ion-icon>
+          Contactar Soporte Técnico
+        </ion-button>
+      </div>
+    </section>
+
+  </div>
 </ion-content>
 

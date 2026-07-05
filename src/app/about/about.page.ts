@@ -1,20 +1,22 @@
-import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { IonContent, IonTitle, IonToolbar, IonCard, IonCardContent } from '@ionic/angular/standalone';
+import { Component } from '@angular/core';
+import { IonContent, IonButton, IonIcon } from "@ionic/angular/standalone";
 
 @Component({
   selector: 'app-about',
   templateUrl: './about.page.html',
   styleUrls: ['./about.page.scss'],
-  standalone: true,
-  imports: [IonCardContent, IonCard, IonContent, IonTitle, IonToolbar, CommonModule, FormsModule]
+  imports: [IonIcon, IonButton, IonContent],
 })
-export class AboutPage implements OnInit {
+export class AboutPage {
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
+  contactWhatsApp() {
+    const phoneNumber = '593969743150'; // Formato internacional para Ecuador sin el '+'
+    const message = encodeURIComponent('Hola Redex-Tech, vengo desde la plataforma Voces y me gustaría recibir soporte técnico.');
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
+    
+    // Abre el enlace en una pestaña nueva de forma segura
+    window.open(whatsappUrl, '_blank');
   }
-
 }

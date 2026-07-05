@@ -1,0 +1,147 @@
+.about-wrapper {
+  max-width: 600px;
+  margin: 0 auto;
+  font-family: var(--ion-font-family, sans-serif);
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+
+  ion-icon {
+    font-size: 1.5rem;
+  }
+  h2 {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--ion-color-dark);
+  }
+}
+
+// 🏢 HEADER INSTITUCIONAL
+.about-header {
+  text-align: center;
+  
+  .logo-about {
+    max-height: 70px;
+    margin-bottom: 8px;
+  }
+
+  h1 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin: 0;
+    color: var(--ion-color-dark);
+  }
+
+  .badge-version {
+    display: inline-block;
+    background: var(--ion-color-light);
+    color: var(--ion-color-step-600);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-top: 6px;
+  }
+
+  .about-lead {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: var(--ion-color-step-700);
+    margin-top: 16px;
+  }
+}
+
+// 🎯 SECCIÓN MISIÓN (CARD DESTACADA)
+.section-mission {
+  .card-mission {
+    background: var(--ion-color-primary-wash, rgba(56, 128, 255, 0.04));
+    border-radius: 20px;
+    padding: 20px;
+    border: 1px solid var(--ion-color-light);
+
+    p {
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: var(--ion-color-step-700);
+      margin-bottom: 12px;
+      
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+// 🛡️ PRIVACIDAD
+.section-privacy {
+  p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--ion-color-step-600);
+  }
+}
+
+// 🛠️ ALIANZA REDEX-TECH
+.section-partner {
+  .partner-card {
+    background: var(--ion-item-background, #ffffff);
+    border: 1px solid var(--ion-color-step-200, #e0e0e0);
+    border-radius: 22px;
+    padding: 24px 20px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+
+    .partner-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 14px;
+
+      .icon-partner {
+        font-size: 2rem;
+        color: var(--ion-color-primary);
+        background: var(--ion-color-light);
+        padding: 10px;
+        border-radius: 14px;
+      }
+
+      h3 {
+        margin: 0;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: var(--ion-color-step-500);
+      }
+
+      h2 {
+        margin: 0;
+        font-size: 1.4rem;
+        font-weight: 800;
+        color: var(--ion-color-dark);
+      }
+    }
+
+    p {
+      font-size: 0.88rem;
+      line-height: 1.5;
+      color: var(--ion-color-step-600);
+      margin-bottom: 20px;
+    }
+
+    // Botón personalizado estilo WhatsApp moderno
+    .btn-whatsapp {
+      --background: #25D366;
+      --background-activated: #128C7E;
+      --background-hover: #20BA5A;
+      --border-radius: 12px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      height: 48px;
+      --box-shadow: 0 4px 12px rgba(37, 211, 102, 0.25);
+    }
+  }
+}
