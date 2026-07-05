@@ -38,3 +38,21 @@ ion-footer.app-footer {
 }
 
 
+// Oculta los botones de escritorio en pantallas medianas hacia abajo (móviles/tablets)
+.ion-hide-md-down {
+  @media (max-width: 768px) {
+    display: none !important;
+  }
+}
+
+// Oculta el botón de hamburguesa en pantallas grandes (escritorio)
+.ion-hide-md-up {
+  @media (min-width: 769px) {
+    display: none !important;
+  }
+}
+
+ion-toolbar {
+  --padding-start: 16px;
+  --padding-end: 16px;
+}

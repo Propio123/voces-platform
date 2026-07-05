@@ -1,61 +1,29 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { IonicModule } from '@ionic/angular';
-import { RouterModule, Router } from '@angular/router';
-import { Auth, onAuthStateChanged, signOut } from '@angular/fire/auth';
-import { Firestore, doc, getDoc } from '@angular/fire/firestore';
-import { FormsModule } from '@angular/forms';
-import { ChatWidgetComponent } from './components/chat-widged/chat-widged.component';
+
+import { Observable } from 'rxjs';
+import { AuthService } from './services/auth.service';
+import { IonApp, IonHeader, IonToolbar, IonButtons, IonMenuButton, IonTitle, IonButton, IonIcon, IonContent, IonFooter, IonMenu, IonList, IonItem, IonLabel } from "@ionic/angular/standalone";
+import { RouterModule, RouterOutlet } from "@angular/router";
+import { ChatWidgetComponent } from "./components/chat-widged/chat-widged.component";
+import { AsyncPipe, CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
-  standalone: true,
-  imports: [CommonModule, IonicModule, RouterModule, FormsModule, ChatWidgetComponent],
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  templateUrl: 'app.component.html',
+  styleUrls: ['app.component.scss'],
+  imports: [CommonModule, RouterModule,AsyncPipe, IonLabel, IonItem, IonList, IonFooter, IonContent, IonIcon, IonButton, IonTitle, IonButtons, IonHeader, IonToolbar, IonMenuButton, RouterOutlet, ChatWidgetComponent, IonApp, IonMenu],
 })
 export class AppComponent {
-  currentYear = new Date().getFullYear();
-  isLoggedIn = false;
-  isAdmin = false;
-  userName = '';
+   currentYear = new Date().getFullYear();
+  // Exponemos el flujo directamente a la vista HTML
+  userRole$: Observable<string | null>;
 
-  constructor(private auth: Auth, private firestore: Firestore, private router: Router) {
-    onAuthStateChanged(this.auth, async (user) => {
-      if (user) {
-        this.isLoggedIn = true;
-        this.userName = user.displayName || '';
-        await this.checkUserRole(user.uid);
-      } else {
-        this.isLoggedIn = false;
-        this.isAdmin = false;
-        this.userName = '';
-      }
-    });
+  constructor(private authService: AuthService) {
+    
+    this.userRole$ = this.authService.getUserRole();
   }
 
-  async checkUserRole(uid: string) {
-    const userDocRef = doc(this.firestore, `users/${uid}`);
-    const userDoc = await getDoc(userDocRef);
-    if (userDoc.exists()) {
-      const data = userDoc.data();
-      this.isAdmin = data['role'] === 'admin';
-    }
+  logout() {
+    this.authService.logout();
   }
-
-  async logout() {
-    await signOut(this.auth);
-    this.router.navigate(['/login']);
-  }
-
-  // Mostrar u ocultar elementos del navbar
-  showHome() { return true; }
-  showAbout() { return true; }
-  showEvaluator() { return this.isLoggedIn; }
-  showRegister() { return !this.isLoggedIn; }
-  showLogin() { return !this.isLoggedIn; }
-  showLogout() { return this.isLoggedIn; }
-  showDashboardOng() { return this.isAdmin; }
-  showChat() { return this.isLoggedIn; } // Chat visible solo si está logueado
 }
-

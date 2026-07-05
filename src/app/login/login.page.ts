@@ -1,10 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { Router } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Auth, signInWithEmailAndPassword } from '@angular/fire/auth';
-import { Firestore, collection, query, where, getDocs } from '@angular/fire/firestore';
-import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -17,36 +16,46 @@ export class LoginPage {
   email = '';
   password = '';
 
-  constructor(
-    private auth: Auth,
-    private firestore: Firestore,
-    private router: Router
-  ) {}
+  private authService = inject(AuthService);
+  private router = inject(Router);
 
   async login() {
     if (!this.email || !this.password) return;
 
     try {
-      const userCredential = await signInWithEmailAndPassword(this.auth, this.email, this.password);
-      const user = userCredential.user;
+      console.log('1. Iniciando proceso de firma en Firebase Auth...');
+      await this.authService.login(this.email, this.password);
+      console.log('2. Autenticación exitosa. Esperando respuesta de Firestore...');
 
-      // Obtener rol desde Firestore
-      const q = query(collection(this.firestore, 'users'), where('uid', '==', user.uid));
-      const snapshot = await getDocs(q);
-      const userData = snapshot.docs[0]?.data();
-      const role = userData?.['role'] || 'normal';
+      // Escuchamos el canal del rol de forma activa
+      const sub = this.authService.getUserRole().subscribe(role => {
+        console.log('3. Valor emitido por el canal de roles:', role);
 
-      // Redirigir según rol
-      if (role === 'normal' || role === 'registered') {
-        this.router.navigate(['/evaluator']);
-      } else if (role === 'admin') {
-        this.router.navigate(['/dashboard']);
-      }
+        // Si es null, significa que Firestore aún está procesando; esperamos la siguiente emisión
+        if (role === null) return; 
+
+        console.log('4. Evaluando redirección para el rol verídico:', role);
+        
+        // Cancelamos la suscripción para evitar bucles antes de navegar
+        sub.unsubscribe(); 
+
+        // 🚨 VERIFICA AQUÍ: ¿Tus rutas en app.routes.ts se escriben exactamente así?
+        if (role === 'admin') {
+          console.log('Redirigiendo a Dashboard ONG...');
+          this.router.navigateByUrl('/dashboard-ong');
+        } else if (role === 'register') {
+          console.log('Redirigiendo a Evaluador...');
+          this.router.navigateByUrl('/evaluator');
+        } else {
+          console.log('Redirigiendo a Home...');
+          this.router.navigateByUrl('/home');
+        }
+      });
+
     } catch (error) {
-      console.error('Error login:', error);
+      console.error('Error crítico en el proceso de login:', error);
     }
   }
 }
-
 
 
