@@ -1,27 +1,18 @@
-<ion-header>
-  <ion-toolbar color="primary">
-    <ion-title>Login</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content class="ion-padding">
-  <ion-item>
-    <ion-input 
-      type="email" 
-      label="Email" 
-      labelPlacement="floating" 
-      [(ngModel)]="email">
-    </ion-input>
-  </ion-item>
+  <!-- 🌟 Envolvemos todo en este div -->
+  <div class="login-wrapper">
+    
+    <!-- Aquí van tus inputs actuales, logos, etc. -->
+    <ion-item>
+      <ion-input label="Correo" labelPlacement="floating" type="email"></ion-input>
+    </ion-item>
+    
+    <ion-item>
+      <ion-input label="Contraseña" labelPlacement="floating" type="password"></ion-input>
+    </ion-item>
 
-  <ion-item>
-   <ion-item>
-  <ion-input label="Contraseña" labelPlacement="floating" type="password"></ion-input>
-</ion-item>
-  </ion-item>
-
-  <ion-button expand="block" color="primary" class="ion-margin-top" (click)="login()">
-    Iniciar Sesión
-  </ion-button>
+    <ion-button expand="block">Iniciar Sesión</ion-button>
+    
+  </div>
 </ion-content>
 

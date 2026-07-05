@@ -1,8 +1,14 @@
+// El ion-content queda libre de Flexbox para que Ionic maneje sus capas internas en paz
 ion-content {
+  --padding-top: 30px;
+}
+
+// 🌟 El Flexbox se lo aplicamos al contenedor interno
+.login-wrapper {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  --padding-top: 30px;
+  min-height: 80vh; // Esto asegura que se centre verticalmente en la pantalla
 }
 
 ion-button {
