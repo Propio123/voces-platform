@@ -36,7 +36,7 @@
     "cors": "^2.8.5",
     "dotenv": "^17.2.3",
     "express": "^5.1.0",
-    "firebase": "^12.4.0",
+    "firebase": "^12.15.0",
     "firebase-admin": "^13.6.0",
     "ionicons": "^7.0.0",
     "ng2-charts": "^8.0.0",

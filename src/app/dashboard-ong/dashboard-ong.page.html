@@ -33,8 +33,8 @@
     </ion-card>
   </div>
 
-  <!-- GRÁFICOS -->
-  <div *ngIf="filteredAnalyses.length > 0; else sinDatos">
+  <!-- 🌟 CAMBIO AQUÍ: Usamos [hidden] en lugar de *ngIf para que los canvas siempre existan -->
+  <div [hidden]="filteredAnalyses.length === 0">
     <canvas id="salaryChart"></canvas>
     <canvas id="scoreChart" style="margin-top: 30px;"></canvas>
 
@@ -65,9 +65,11 @@
     </ion-card>
   </div>
 
-  <ng-template #sinDatos>
+  <!-- Mensaje alternativo si está vacío -->
+  <div *ngIf="filteredAnalyses.length === 0">
     <ion-text color="medium">
       <p class="ion-text-center">No hay datos disponibles para mostrar.</p>
     </ion-text>
-  </ng-template>
+  </div>
+
 </ion-content>

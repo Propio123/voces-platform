@@ -6,7 +6,7 @@ import { IonApp, IonHeader, IonToolbar, IonButtons, IonMenuButton, IonTitle, Ion
 import { RouterModule, RouterOutlet } from "@angular/router";
 import { ChatWidgetComponent } from "./components/chat-widged/chat-widged.component";
 import { AsyncPipe, CommonModule } from '@angular/common';
-import { homeOutline, informationCircleOutline, personOutline, logInOutline } from 'ionicons/icons';
+import { homeOutline, informationCircleOutline, personOutline, logInOutline, analyticsOutline, shieldCheckmarkOutline, personAddOutline, logOutOutline } from 'ionicons/icons';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -15,11 +15,15 @@ import { homeOutline, informationCircleOutline, personOutline, logInOutline } fr
 })
 export class AppComponent {
   public menuIcons = {
-    home: homeOutline,
-    about: informationCircleOutline,
-    profile: personOutline,
-    login: logInOutline
-  };
+ 
+  homeOutline, 
+  informationCircleOutline, 
+  analyticsOutline, 
+  shieldCheckmarkOutline, 
+  personAddOutline, 
+  logInOutline, 
+  logOutOutline 
+};
    currentYear = new Date().getFullYear();
   // Exponemos el flujo directamente a la vista HTML
   userRole$: Observable<string | null>;
