@@ -1,38 +1,13 @@
-<form class="login-form" type="hidden" data-netlify="true" (ngSubmit)="onLogin()">
-  
-  <!-- Campo Correo Limpio y Estabilizado -->
-  <ion-input 
-    label="Correo electrónico" 
-    labelPlacement="floating" 
-    fill="outline" 
-    type="email" 
-    placeholder="ejemplo@correo.com"
-    [(ngModel)]="email"
-    name="email"
-    class="ion-margin-bottom"
-    required>
-    <!-- El ícono se integra dentro del componente para que Ionic calcule el espacio del clic perfectamente -->
-    <ion-icon [icon]="loginIcons.mail" slot="start" class="ion-padding-horizontal"></ion-icon>
-  </ion-input>
-  
-  <!-- Campo Contraseña Limpio y Estabilizado -->
-  <ion-input 
-    label="Contraseña" 
-    labelPlacement="floating" 
-    fill="outline" 
-    type="password" 
-    placeholder="••••••••"
-    [(ngModel)]="password"
-    name="password"
-    class="ion-margin-bottom"
-    required>
-    <ion-icon [icon]="loginIcons.lock" slot="start" class="ion-padding-horizontal"></ion-icon>
-  </ion-input>
-
-  <!-- Botón de Iniciar Sesión -->
-  <ion-button expand="block" color="primary" type="submit" class="btn-submit ion-margin-top">
-    <ion-icon [icon]="loginIcons.logIn" slot="start"></ion-icon>
-    Iniciar Sesión
-  </ion-button>
+<form name="contacto" method="POST" data-netlify="true">
+  <input type="hidden" name="form-name" value="contacto" />
+  <p>
+    <label>Tu Nombre: <input type="text" name="nombre" /></label>
+  </p>
+  <p>
+    <label>Email: <input type="email" name="email" /></label>
+  </p>
+  <p>
+    <button type="submit">Enviar</button>
+  </p>
 </form>
 
