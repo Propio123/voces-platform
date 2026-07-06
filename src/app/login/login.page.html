@@ -1,13 +1,48 @@
-<form name="contacto" method="POST" data-netlify="true">
-  <input type="hidden" name="form-name" value="contacto" />
-  <p>
-    <label>Tu Nombre: <input type="text" name="nombre" /></label>
-  </p>
-  <p>
-    <label>Email: <input type="email" name="email" /></label>
-  </p>
-  <p>
-    <button type="submit">Enviar</button>
-  </p>
-</form>
+<ion-content class="ion-padding-vertical">
+  <div class="login-wrapper">
+    
+    <header class="login-header">
+      <img src="assets/logo.png" alt="Logo Voces" class="login-logo">
+      <h1>Ingresar a Voces</h1>
+      <p>Accede a tu panel y audita tus condiciones laborales con IA.</p>
+    </header>
+
+    <form class="login-form" name="contacto" method="POST" data-netlify="true" (ngSubmit)="onLogin()">
+      <input type="hidden" name="form-name" value="contacto" />
+      
+      <div class="native-input-group">
+        <ion-icon [icon]="loginIcons.mail" class="input-icon"></ion-icon>
+        <input 
+          type="email" 
+          name="email"
+          placeholder="Correo electrónico"
+          [(ngModel)]="email"
+          required
+          class="custom-native-input" />
+      </div>
+      
+      <div class="native-input-group">
+        <ion-icon [icon]="loginIcons.lock" class="input-icon"></ion-icon>
+        <input 
+          type="password" 
+          name="password"
+          placeholder="Contraseña"
+          [(ngModel)]="password"
+          required
+          class="custom-native-input" />
+      </div>
+
+      <ion-button expand="block" color="primary" type="submit" class="btn-submit ion-margin-top">
+        <ion-icon [icon]="loginIcons.logIn" slot="start"></ion-icon>
+        Iniciar Sesión
+      </ion-button>
+    </form>
+
+    <footer class="login-footer">
+      <p>¿No tienes una cuenta aún?</p>
+      <a routerLink="/register">Regístrate de forma anónima</a>
+    </footer>
+    
+  </div>
+</ion-content>
 
