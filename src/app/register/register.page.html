@@ -5,29 +5,68 @@
 </ion-header>
 
 <ion-content class="ion-padding">
-  <ion-item>
-    <ion-label position="floating">Nombre completo</ion-label>
-    <ion-input [(ngModel)]="name"></ion-input>
-  </ion-item>
+  <div class="register-wrapper">
+    
+    <header class="register-header">
+      <h1>Crear Cuenta</h1>
+      <p>Únete a Voces y empieza a auditar tus derechos laborales de forma segura.</p>
+    </header>
 
-  <ion-item>
-    <ion-label position="floating">Email</ion-label>
-    <ion-input type="email" [(ngModel)]="email"></ion-input>
-  </ion-item>
+    <form class="register-form" (ngSubmit)="register()">
+      
+      <div class="native-input-group">
+        <label class="native-label">Nombre completo</label>
+        <input 
+          type="text" 
+          [(ngModel)]="name" 
+          name="name" 
+          placeholder="Tu nombre o pseudónimo" 
+          required 
+          class="custom-native-input" />
+      </div>
 
-  <ion-item>
-    <ion-label position="floating">Contraseña</ion-label>
-    <ion-input type="password" [(ngModel)]="password"></ion-input>
-  </ion-item>
+      <div class="native-input-group">
+        <label class="native-label">Correo electrónico</label>
+        <input 
+          type="email" 
+          [(ngModel)]="email" 
+          name="email" 
+          placeholder="ejemplo@correo.com" 
+          required 
+          class="custom-native-input" />
+      </div>
 
-  <ion-item>
-    <ion-label>Tipo de usuario</ion-label>
-    <ion-select [(ngModel)]="role">
-      <ion-select-option value="normal">Normal (solo evaluación)</ion-select-option>
-      <ion-select-option value="registered">Registrado (IA + mejoras)</ion-select-option>
-    </ion-select>
-  </ion-item>
+      <div class="native-input-group">
+        <label class="native-label">Contraseña</label>
+        <input 
+          type="password" 
+          [(ngModel)]="password" 
+          name="password" 
+          placeholder="Mínimo 6 caracteres" 
+          required 
+          class="custom-native-input" />
+      </div>
 
-  <ion-button expand="block" color="success" (click)="register()">Registrarse</ion-button>
+      <div class="native-input-group">
+        <label class="native-label">Tipo de usuario</label>
+        <ion-item lines="none" class="custom-ion-item-select">
+          <ion-select [(ngModel)]="role" name="role" interface="popover" placeholder="Selecciona un rol">
+            <ion-select-option value="normal">Normal (solo evaluación)</ion-select-option>
+            <ion-select-option value="registered">Registrado (IA + mejoras)</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </div>
+
+      <ion-button expand="block" color="success" type="submit" class="btn-register ion-margin-top">
+        Registrarse
+      </ion-button>
+    </form>
+
+    <footer class="register-footer">
+      <p>¿Ya tienes una cuenta registrada?</p>
+      <a routerLink="/login">Inicia sesión aquí</a>
+    </footer>
+
+  </div>
 </ion-content>
 

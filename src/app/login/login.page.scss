@@ -36,19 +36,22 @@
   }
 }
 
-// Estructura del Formulario e Inputs independientes (Anti-error setFocus)
+// Estructura del Formulario con Inputs Nativos Inmunes a Netlify
 .login-form {
   background: var(--ion-item-background, #ffffff);
   border-radius: 20px;
   padding: 8px 0;
+  width: 100%; // Garantiza que el formulario use todo el ancho del wrapper centrado
 
-  .input-group {
+  // Cambiado de .input-group a .native-input-group para hacer match con el HTML híbrido
+  .native-input-group {
     position: relative;
     margin-bottom: 18px;
     display: flex;
     align-items: center;
+    width: 100%; // Asegura que el grupo ocupe todo el ancho disponible
 
-    // Íconos internos minimalistas dentro del contorno del input
+    // Íconos internos minimalistas perfectamente posicionados a la izquierda
     .input-icon {
       position: absolute;
       left: 14px;
@@ -58,18 +61,32 @@
       pointer-events: none;
     }
 
-    // Configuración visual del ion-input moderno
-    ion-input {
-      --padding-start: 40px; // Espacio reservado para el ícono izquierdo
-      --border-radius: 12px;
-      --border-color: var(--ion-color-step-200, #e0e0e0);
-      --background: transparent;
+    // Configuración visual premium para el input nativo HTML5
+    .custom-native-input {
+      width: 100%; // Obliga al input a expandirse simétricamente en el centro
+      height: 52px;
+      padding: 0 16px 0 46px; // 46px a la izquierda deja el espacio exacto para el ícono
+      border-radius: 12px;
+      border: 1px solid var(--ion-color-step-200, #e0e0e0);
+      background: transparent;
       font-size: 0.95rem;
-      width: 100%;
+      color: var(--ion-color-dark);
+      outline: none;
+      box-sizing: border-box; // Evita que el padding altere el ancho total del input
+      transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+
+      &:focus {
+        border-color: var(--ion-color-primary, #3880ff);
+        box-shadow: 0 0 0 3px rgba(var(--ion-color-primary-rgb), 0.1);
+      }
+
+      &::placeholder {
+        color: var(--ion-color-step-400, #a0a0a0);
+      }
     }
   }
 
-  // El botón principal de ejecución
+  // El botón principal de ejecución centrado y expandido
   .btn-submit {
     --border-radius: 12px;
     --box-shadow: 0 4px 14px rgba(var(--ion-color-primary-rgb), 0.3);
@@ -77,6 +94,7 @@
     font-size: 1rem;
     height: 48px;
     margin-top: 24px;
+    width: 100%;
   }
 }
 

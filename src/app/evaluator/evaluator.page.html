@@ -5,52 +5,81 @@
 </ion-header>
 
 <ion-content class="ion-padding">
-
-  <ion-item>
-    <ion-label position="floating">Tipo de trabajo</ion-label>
-    <ion-input [(ngModel)]="job" placeholder="Ej. Empacadora de tomates"></ion-input>
-  </ion-item>
-
-  <ion-item>
-    <ion-label position="floating">Horas por semana</ion-label>
-    <ion-input type="number" [(ngModel)]="hoursPerWeek"></ion-input>
-  </ion-item>
-
-  <ion-item>
-    <ion-label position="floating">Sueldo mensual (USD)</ion-label>
-    <ion-input type="number" [(ngModel)]="salary"></ion-input>
-  </ion-item>
-
-  <ion-item>
-    <ion-label position="floating">País</ion-label>
-    <ion-input [(ngModel)]="country" placeholder="Ecuador"></ion-input>
-  </ion-item>
-
-  <ion-button expand="block" color="success" (click)="evaluateSalary()">
-    Evaluar
-  </ion-button>
-
-  <div *ngIf="loading" class="ion-text-center">
-    <ion-spinner name="crescent"></ion-spinner>
-    <p>Analizando con IA...</p>
-  </div>
-
-  <ion-card *ngIf="analysis">
-    <ion-card-header>
-      <ion-card-title>Resultado</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      <div class="semaforo-container">
-        <div class="semaforo" [ngStyle]="{'width.%': score, 'background-color': color}"></div>
+  <div class="evaluator-wrapper">
+    
+    <form class="evaluator-form" (ngSubmit)="evaluateSalary()">
+      
+      <div class="native-input-group">
+        <label class="native-label">Tipo de trabajo</label>
+        <input 
+          type="text" 
+          [(ngModel)]="job" 
+          name="job" 
+          placeholder="Ej. Empacadora de tomates" 
+          required 
+          class="custom-native-input" />
       </div>
-      <p>{{ score }}%</p>
-      <p>{{ analysis }}</p>
-    </ion-card-content>
-  </ion-card>
 
+      <div class="native-input-group">
+        <label class="native-label">Horas por semana</label>
+        <input 
+          type="number" 
+          [(ngModel)]="hoursPerWeek" 
+          name="hoursPerWeek" 
+          placeholder="Ej. 40" 
+          required 
+          class="custom-native-input" />
+      </div>
+
+      <div class="native-input-group">
+        <label class="native-label">Sueldo mensual (USD)</label>
+        <input 
+          type="number" 
+          [(ngModel)]="salary" 
+          name="salary" 
+          placeholder="Ej. 460" 
+          required 
+          class="custom-native-input" />
+      </div>
+
+      <div class="native-input-group">
+        <label class="native-label">País</label>
+        <input 
+          type="text" 
+          [(ngModel)]="country" 
+          name="country" 
+          placeholder="Ej. Ecuador" 
+          required 
+          class="custom-native-input" />
+      </div>
+
+      <ion-button expand="block" color="success" type="submit" class="btn-evaluate ion-margin-top">
+        Evaluar
+      </ion-button>
+    </form>
+
+    <div *ngIf="loading" class="ion-text-center loading-container">
+      <ion-spinner name="crescent" color="success"></ion-spinner>
+      <p>Analizando con IA...</p>
+    </div>
+
+    <ion-card *ngIf="analysis" class="result-card">
+      <ion-card-header>
+        <ion-card-title>Resultado del Análisis</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <div class="semaforo-container">
+          <div class="semaforo" [ngStyle]="{'width.%': score, 'background-color': color}"></div>
+        </div>
+        <div class="score-badge" [ngStyle]="{'color': color}">
+          <strong>{{ score }}%</strong> Justicia Laboral
+        </div>
+        <p class="analysis-text">{{ analysis }}</p>
+      </ion-card-content>
+    </ion-card>
+
+  </div>
 </ion-content>
-
-
 
 
 

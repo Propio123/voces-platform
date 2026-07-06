@@ -1,17 +1,131 @@
-ion-content {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  --padding-top: 30px;
+// Contenedor principal centrado a 420px
+.register-wrapper {
+  max-width: 420px;
+  margin: 0 auto;
+  padding: 16px 8px;
+  font-family: var(--ion-font-family, sans-serif);
 }
 
-ion-button {
-  margin-top: 20px;
+// Encabezado estético
+.register-header {
+  text-align: center;
+  margin-bottom: 28px;
+
+  h1 {
+    font-size: 1.8rem;
+    font-weight: 800;
+    margin: 0;
+    color: var(--ion-color-dark);
+  }
+
+  p {
+    font-size: 0.9rem;
+    color: var(--ion-color-step-600, #666666);
+    margin: 6px 0 0 0;
+    line-height: 1.4;
+  }
 }
 
-a {
-  color: var(--ion-color-primary);
-  text-decoration: none;
-  font-weight: bold;
+// Estructura adaptada del Formulario
+.register-form {
+  background: var(--ion-item-background, #ffffff);
+  border-radius: 20px;
+  width: 100%;
+
+  .native-input-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 18px;
+    width: 100%;
+
+    .native-label {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--ion-color-step-700, #444444);
+      margin-bottom: 6px;
+      padding-left: 4px;
+    }
+
+    // Inputs nativos con comportamiento responsivo e inmunes a Netlify
+    .custom-native-input {
+      width: 100%;
+      height: 50px;
+      padding: 0 16px;
+      border-radius: 12px;
+      border: 1px solid var(--ion-color-step-200, #e0e0e0);
+      background: transparent;
+      font-size: 0.95rem;
+      color: var(--ion-color-dark);
+      outline: none;
+      box-sizing: border-box;
+      transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+
+      &:focus {
+        border-color: var(--ion-color-success, #2dd36f);
+        box-shadow: 0 0 0 3px rgba(var(--ion-color-success-rgb), 0.1);
+      }
+
+      &::placeholder {
+        color: var(--ion-color-step-400, #b0b0b0);
+      }
+    }
+
+    // Adaptación visual del contenedor select de Ionic para emparejar look estético
+    .custom-ion-item-select {
+      --background: transparent;
+      --border-radius: 12px;
+      --padding-start: 6px;
+      border: 1px solid var(--ion-color-step-200, #e0e0e0);
+      border-radius: 12px;
+      height: 50px;
+      width: 100%;
+      box-sizing: border-box;
+
+      ion-select {
+        width: 100%;
+        font-size: 0.95rem;
+        color: var(--ion-color-dark);
+        --placeholder-color: var(--ion-color-step-400);
+      }
+    }
+  }
+
+  // Botón Principal de Registro
+  .btn-register {
+    --border-radius: 12px;
+    --box-shadow: 0 4px 14px rgba(var(--ion-color-success-rgb), 0.3);
+    font-weight: 700;
+    font-size: 1rem;
+    height: 48px;
+    margin-top: 24px;
+    width: 100%;
+  }
+}
+
+// Pie de página descriptivo
+.register-footer {
+  text-align: center;
+  margin-top: 32px;
+  border-top: 1px solid var(--ion-color-step-150, #eeeeee);
+  padding-top: 20px;
+
+  p {
+    margin: 0;
+    font-size: 0.88rem;
+    color: var(--ion-color-step-500);
+  }
+
+  a {
+    display: inline-block;
+    margin-top: 4px;
+    color: var(--ion-color-primary);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.92rem;
+    
+    &:hover, &:active {
+      text-decoration: underline;
+    }
+  }
 }
 
