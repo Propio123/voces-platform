@@ -47,7 +47,7 @@ export class EvaluatorPage {
 
       // 🌟 Reemplazamos toPromise() por firstValueFrom() para compatibilidad estricta
       const response: any = await firstValueFrom(
-        this.http.post('http://localhost:3000/evaluate-salary', body)
+        this.http.post('http://localhost:10000', body)
       );
 
       this.analysis = response.analysis || 'No se pudo obtener respuesta.';
