@@ -86,3 +86,15 @@
   ion-card-header { padding: 12px 16px 4px 18px; ion-card-title { font-size: 0.95rem; font-weight: 700; } }
   ion-card-content { padding: 0 16px 12px 18px; font-size: 0.82rem; color: #666; }
 }
+.purpose-banner-container {
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  .purpose-img {
+    width: 100%;
+    height: auto;
+    max-height: 240px;
+    object-fit: cover;
+    display: block;
+  }
+}
