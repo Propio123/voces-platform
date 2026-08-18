@@ -1,115 +1,116 @@
 <ion-content class="ion-padding-vertical">
   <div class="home-wrapper">
     
-    <!-- 1. HERO SECTION: Conexión Humana & Acción Inmediata -->
+    <!-- HERO SECTION GRID: Texto institucional e imagen a la izquierda | Evaluador a la derecha -->
     <header class="hero-section">
-      <div class="hero-brand">
-        <img src="assets/logo.png" alt="Logo Voces" class="logo-hero">
-        <h1>Voces</h1>
-        <p class="hero-subtitle">Tu espacio seguro para auditar, reportar y exigir justicia laboral</p>
-      </div>
+      <div class="hero-grid">
+        <div class="hero-brand">
+          <img src="assets/logo.png" alt="Logo Voces" class="logo-hero">
+          <h1>Voces</h1>
+          <p class="hero-subtitle">Plataforma de Inteligencia Territorial y Justificación de Derechos Laborales</p>
+          <div class="hero-highlights">
+            <span class="badge"><ion-icon [icon]="homeIcons.shield"></ion-icon> 100% Anónimo</span>
+            <span class="badge"><ion-icon [icon]="homeIcons.analytics"></ion-icon> Datos en Tiempo Real</span>
+          </div>
+        </div>
 
-      <div class="hero-card">
-        <h2>¿Sientes que tu trabajo no es valorado ni remunerado como exige la ley?</h2>
-        <p>
-          Expresa tu situación en un entorno <strong>100% anónimo</strong>. Nuestra herramienta evalúa tu salario y jornada frente a la normativa vigente en menos de 2 minutos.
-        </p>
-        
-        <ion-button expand="block" color="success" class="btn-evaluator ion-margin-top" routerLink="/evaluator">
-          <ion-icon [icon]="homeIcons.calculator" slot="start"></ion-icon>
-          Auditar mi salario gratis
-        </ion-button>
+        <!-- Tarjeta del Evaluador como Módulo Lateral -->
+        <div class="hero-card-aside">
+          <div class="card-tag">Herramienta Ciudadana</div>
+          <h2>¿Ganas lo que realmente te corresponde?</h2>
+          <p>
+            Audita tu salario actual y jornada laboral frente a la ley en menos de 2 minutos mediante IA.
+          </p>
+          
+          <ion-button expand="block" color="success" class="btn-evaluator ion-margin-top" routerLink="/evaluator">
+            <ion-icon [icon]="homeIcons.calculator" slot="start"></ion-icon>
+            Auditar mi salario gratis
+          </ion-button>
+        </div>
       </div>
     </header>
 
-    <!-- 2. PROPÓSITO Y EMPODERAMIENTO CIUDADANO -->
+    <!-- PROPÓSITO GENERAL -->
     <section class="section-purpose ion-padding">
       <div class="section-title">
         <ion-icon [icon]="homeIcons.shield" color="primary"></ion-icon>
         <h2>Haciendo visible lo invisible</h2>
       </div>
       <p class="purpose-text">
-        Miles de trabajadores enfrentan jornadas excesivas e ingresos injustos en silencio. <strong>Voces</strong> transforma cada reporte individual en un testimonio protegido que impulsa el cambio social.
+        Transformamos cada reporte de los trabajadores en datos estructurados de alto valor para exponer las brechas de desigualdad laboral en Ecuador.
       </p>
-      
-      <div class="benefit-pills">
-        <div class="pill"><ion-icon [icon]="homeIcons.eyeOff"></ion-icon> 100% Anónimo y Seguro</div>
-        <div class="pill"><ion-icon [icon]="homeIcons.flash"></ion-icon> Orientación con IA</div>
-        <div class="pill"><ion-icon [icon]="homeIcons.trending"></ion-icon> Respaldo para tu defensa</div>
-      </div>
-
-      <div class="cta-register-box ion-margin-top">
-        <p>Únete a la red y accede a herramientas avanzadas para proteger tus derechos.</p>
-        <ion-button fill="clear" color="primary" class="btn-register" routerLink="/register">
-          Crear mi cuenta gratuita
-          <ion-icon [icon]="homeIcons.arrowForward" slot="end"></ion-icon>
-        </ion-button>
-      </div>
     </section>
 
-    <!-- 3. DEMOSTRACIÓN EN VIVO: OBSERVATORIO DE INTELIGENCIA TERRITORIAL (Para ONGs) -->
+    <!-- OBSERVATORIO DESTACADO (PROTAGONISTA) -->
     <section class="section-ong-live ion-padding">
-      <div class="section-title">
-        <ion-icon [icon]="homeIcons.analytics" color="tertiary"></ion-icon>
-        <h2>Observatorio de Datos en Tiempo Real</h2>
+      <div class="section-header-banner">
+        <div class="section-title">
+          <ion-icon [icon]="homeIcons.analytics" color="tertiary"></ion-icon>
+          <h2>Observatorio de Datos e Impacto Territorial</h2>
+        </div>
+        <span class="live-indicator"><span class="dot"></span> En vivo</span>
       </div>
+
       <p class="section-description">
-        Así es como cada evaluación ciudadana se sintetiza de forma ética y anonimizada en métricas clave para <strong>ONGs, investigadores y proyectos de desarrollo social</strong>.
+        Módulo de inteligencia diseñado para <strong>ONGs, investigadores y tomadores de decisiones</strong>. Centraliza y procesa los datos ingresados por la ciudadanía manteniendo la anonimización desde el origen.
       </p>
 
-      <!-- Filtro Integrado -->
-      <ion-item class="filter-item">
-        <ion-label>Filtrar territorio</ion-label>
-        <ion-select [(ngModel)]="selectedCountry" (ionChange)="applyFilters()">
-          <ion-select-option *ngFor="let c of countries" [value]="c">{{ c }}</ion-select-option>
-        </ion-select>
-      </ion-item>
-
-      <!-- Tarjetas de Métricas -->
-      <div class="stats-grid ion-margin-top">
-        <ion-card class="stat-card">
-          <ion-card-header>Salario Promedio</ion-card-header>
-          <ion-card-content>{{ avgSalary | number:'1.0-2' }} USD</ion-card-content>
-        </ion-card>
-        <ion-card class="stat-card">
-          <ion-card-header>Índice Cumplimiento</ion-card-header>
-          <ion-card-content>{{ avgScore | number:'1.0-2' }} / 10</ion-card-content>
-        </ion-card>
-        <ion-card class="stat-card">
-          <ion-card-header>Horas / Semana</ion-card-header>
-          <ion-card-content>{{ avgHours | number:'1.0-2' }} hrs</ion-card-content>
-        </ion-card>
-        <ion-card class="stat-card">
-          <ion-card-header>Casos Auditados</ion-card-header>
-          <ion-card-content>{{ filteredAnalyses.length }}</ion-card-content>
-        </ion-card>
+      <!-- Selector y Métricas -->
+      <div class="dashboard-controls">
+        <ion-item class="filter-item">
+          <ion-label>Territorio</ion-label>
+          <ion-select [(ngModel)]="selectedCountry" (ionChange)="applyFilters()">
+            <ion-select-option *ngFor="let c of countries" [value]="c">{{ c }}</ion-select-option>
+          </ion-select>
+        </ion-item>
       </div>
 
-      <!-- Gráficos y Tablas Integrados -->
-      <div [hidden]="filteredAnalyses.length === 0" class="charts-container ion-margin-top">
-        <ion-card class="chart-card">
-          <ion-card-header>Distribución de Ingresos</ion-card-header>
-          <ion-card-content>
-            <canvas id="salaryChart"></canvas>
-          </ion-card-content>
-        </ion-card>
+      <div class="stats-grid ion-margin-top">
+        <div class="stat-card">
+          <span class="stat-label">Salario Promedio</span>
+          <span class="stat-value">${{ avgSalary | number:'1.0-2' }}</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-label">Índice Justicia</span>
+          <span class="stat-value">{{ avgScore | number:'1.0-2' }} / 10</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-label">Horas / Semana</span>
+          <span class="stat-value">{{ avgHours | number:'1.0-2' }}h</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-label">Muestra Total</span>
+          <span class="stat-value">{{ filteredAnalyses.length }} casos</span>
+        </div>
+      </div>
 
-        <ion-card class="chart-card ion-margin-top">
-          <ion-card-header>Calidad de Condiciones Laborales</ion-card-header>
-          <ion-card-content>
-            <canvas id="scoreChart"></canvas>
-          </ion-card-content>
-        </ion-card>
+      <!-- Lienzos de Visualización -->
+      <div [hidden]="filteredAnalyses.length === 0" class="charts-container ion-margin-top">
+        <div class="chart-grid">
+          <ion-card class="chart-card">
+            <ion-card-header>Brecha de Ingresos por Puesto</ion-card-header>
+            <ion-card-content class="canvas-wrapper">
+              <canvas id="salaryChart"></canvas>
+            </ion-card-content>
+          </ion-card>
+
+          <ion-card class="chart-card">
+            <ion-card-header>Cumplimiento de Jornada Legal</ion-card-header>
+            <ion-card-content class="canvas-wrapper">
+              <canvas id="scoreChart"></canvas>
+            </ion-card-content>
+          </ion-card>
+        </div>
 
         <ion-card class="table-card ion-margin-top">
-          <ion-card-header>Muestra de Monitoreo Anonimizado</ion-card-header>
+          <ion-card-header>Monitoreo Anonimizado Reciente</ion-card-header>
           <ion-card-content>
             <div class="table-wrapper">
               <table class="data-table">
                 <thead>
                   <tr>
                     <th>País</th>
-                    <th>Sector / Puesto</th>
+                    <th>Puesto</th>
                     <th>Salario</th>
                     <th>Horas</th>
                     <th>Índice</th>
@@ -130,27 +131,21 @@
         </ion-card>
       </div>
 
-      <div *ngIf="filteredAnalyses.length === 0" class="ion-padding ion-text-center">
-        <ion-text color="medium">
-          <p>No se registran datos para el filtro seleccionado.</p>
-        </ion-text>
-      </div>
-
-      <!-- CTA Específico para Organizaciones -->
+      <!-- Recuadro para ONGs -->
       <div class="ong-callout ion-margin-top ion-padding">
-        <h3>¿Representas a una ONG o Institución?</h3>
-        <p>Accede a reportes sectoriales completos, mapas de calor territorial y bases de datos estructuradas para fundamentar tus proyectos sociales.</p>
-        <ion-button fill="outline" color="tertiary" expand="block" routerLink="/contact-ong">
-          Solicitar acceso institucional
+        <h3>¿Necesitas estos datos para tus proyectos o informes institucionales?</h3>
+        <p>Proporcionamos acceso a reportes desagregados, mapas de calor y filtros sectoriales para sustentar programas de desarrollo.</p>
+        <ion-button fill="solid" color="tertiary" expand="block" routerLink="/contact-ong">
+          Solicitar Acceso Institucional
         </ion-button>
       </div>
     </section>
 
-    <!-- 4. ACTUALIDAD Y NOTICIAS -->
+    <!-- NOTICIAS -->
     <section class="section-news ion-padding">
       <div class="section-title">
         <ion-icon [icon]="homeIcons.newspaper" color="medium"></ion-icon>
-        <h2>Actualidad y Derechos Laborales</h2>
+        <h2>Actualidad y Publicaciones</h2>
       </div>
       
       <div class="news-grid">
