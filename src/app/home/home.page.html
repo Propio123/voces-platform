@@ -1,7 +1,7 @@
 <ion-content class="ion-padding-vertical">
-  <div class="home-wrapper">
+  <div class="home-wrapper max-container">
     
-    <!-- HERO SECTION GRID: Texto institucional e imagen a la izquierda | Evaluador a la derecha -->
+    <!-- HERO SECTION GRID: Texto institucional a la izquierda | Evaluador a la derecha -->
     <header class="hero-section">
       <div class="hero-grid">
         <div class="hero-brand">
@@ -9,8 +9,12 @@
           <h1>Voces</h1>
           <p class="hero-subtitle">Plataforma de Inteligencia Territorial y Justificación de Derechos Laborales</p>
           <div class="hero-highlights">
-            <span class="badge"><ion-icon [icon]="homeIcons.shield"></ion-icon> 100% Anónimo</span>
-            <span class="badge"><ion-icon [icon]="homeIcons.analytics"></ion-icon> Datos en Tiempo Real</span>
+            <span class="badge">
+              <ion-icon [icon]="homeIcons.shield"></ion-icon> 100% Anónimo
+            </span>
+            <span class="badge">
+              <ion-icon [icon]="homeIcons.analytics"></ion-icon> Datos en Tiempo Real
+            </span>
           </div>
         </div>
 
@@ -32,7 +36,7 @@
 
     <!-- PROPÓSITO GENERAL -->
     <section class="section-purpose ion-padding">
-      <div class="section-title">
+      <div class="sec-title">
         <ion-icon [icon]="homeIcons.shield" color="primary"></ion-icon>
         <h2>Haciendo visible lo invisible</h2>
       </div>
@@ -44,7 +48,7 @@
     <!-- OBSERVATORIO DESTACADO (PROTAGONISTA) -->
     <section class="section-ong-live ion-padding">
       <div class="section-header-banner">
-        <div class="section-title">
+        <div class="sec-title">
           <ion-icon [icon]="homeIcons.analytics" color="tertiary"></ion-icon>
           <h2>Observatorio de Datos e Impacto Territorial</h2>
         </div>
@@ -57,7 +61,7 @@
 
       <!-- Selector y Métricas -->
       <div class="dashboard-controls">
-        <ion-item class="filter-item">
+        <ion-item class="filter-item" lines="none">
           <ion-label>Territorio</ion-label>
           <ion-select [(ngModel)]="selectedCountry" (ionChange)="applyFilters()">
             <ion-select-option *ngFor="let c of countries" [value]="c">{{ c }}</ion-select-option>
@@ -86,15 +90,15 @@
 
       <!-- Lienzos de Visualización -->
       <div [hidden]="filteredAnalyses.length === 0" class="charts-container ion-margin-top">
-        <div class="chart-grid">
-          <ion-card class="chart-card">
+        <div class="chart-grid grid-2col">
+          <ion-card class="chart-card card-flat">
             <ion-card-header>Brecha de Ingresos por Puesto</ion-card-header>
             <ion-card-content class="canvas-wrapper">
               <canvas id="salaryChart"></canvas>
             </ion-card-content>
           </ion-card>
 
-          <ion-card class="chart-card">
+          <ion-card class="chart-card card-flat">
             <ion-card-header>Cumplimiento de Jornada Legal</ion-card-header>
             <ion-card-content class="canvas-wrapper">
               <canvas id="scoreChart"></canvas>
@@ -102,7 +106,7 @@
           </ion-card>
         </div>
 
-        <ion-card class="table-card ion-margin-top">
+        <ion-card class="table-card card-flat ion-margin-top">
           <ion-card-header>Monitoreo Anonimizado Reciente</ion-card-header>
           <ion-card-content>
             <div class="table-wrapper">
@@ -143,12 +147,12 @@
 
     <!-- NOTICIAS -->
     <section class="section-news ion-padding">
-      <div class="section-title">
+      <div class="sec-title">
         <ion-icon [icon]="homeIcons.newspaper" color="medium"></ion-icon>
         <h2>Actualidad y Publicaciones</h2>
       </div>
       
-      <div class="news-grid">
+      <div class="news-grid grid-2col">
         <ion-card *ngFor="let n of news" class="modern-card">
           <div class="card-edge-highlight"></div>
           <ion-card-header>

@@ -17,3 +17,8 @@
 body {
   background-color: #f7f9fc;
 }
+/* Clases globales reutilizables para reducir el peso de componentes */
+.max-container { max-width: 1000px; margin: 0 auto; font-family: var(--ion-font-family, sans-serif); }
+.sec-title { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; ion-icon { font-size: 1.6rem; } h2 { margin: 0; font-size: 1.35rem; font-weight: 700; color: var(--ion-color-dark); } }
+.grid-2col { display: grid; grid-template-columns: 1fr; gap: 12px; @media (min-width: 768px) { grid-template-columns: 1fr 1fr; } }
+.card-flat { margin: 0; border-radius: 14px; box-shadow: none; border: 1px solid #f0f0f0; ion-card-header { font-size: 0.88rem; font-weight: 700; } }
